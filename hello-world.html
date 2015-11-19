@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+<html>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ <script src="https://connect.soundcloud.com/sdk.js"></script>
+ 
+ <script>
+ 		SC.initialize({
+ 		        client_id:'a5bdf6d0ff1e8a2068bece5873305377'	
+ 		});
+ 		$(document).ready(function(){
+ 		var search =$("#searchButton");
+ 		search.click(function(){
+ 		var userChoice=$("#genreSearch").val();
+ 		
+ 		SC.get('/tracks', {genres: userChoice}, function(tracks){
+ 		 $(tracks).each(function(index,track){
+ 		 	$('#results').append($('<li><img src='+track.artwork_url+'</img>' +track.title+'</li>'));
+ 		 	
+ 		});
+ 		});
+ 		});
+ 		});
+ 		
+ 		
+ 		
+ </script>
+<body>
+	<h1> This website used the Soundcloud API</h1>
+	<input id= "genreSearch" type ="text" placeholder = "Select a Genre">
+	<button id= "searchButton">Submit</button>
+	<ul id ="results"></ul>
+
+</body>
+</html>
